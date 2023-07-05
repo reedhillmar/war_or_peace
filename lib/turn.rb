@@ -30,6 +30,8 @@ class Turn
             else
                 player2
             end
+        else
+            "No Winner"
         end
     end
 
@@ -40,6 +42,9 @@ class Turn
         elsif type == :war
             3.times {spoils_of_war << player1.deck.remove_card}
             3.times {spoils_of_war << player2.deck.remove_card}
+        else
+            3.times {player1.deck.remove_card}
+            3.times {player2.deck.remove_card}
         end
     end
 
