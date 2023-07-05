@@ -131,13 +131,13 @@ RSpec.describe Turn do
 
         turn = Turn.new(player1, player2)
 
-        turn.pile_cards
-
         winner = turn.winner
+        
+        turn.pile_cards
 
         turn.award_spoils(winner)
 
-        expect(player2.deck).to eq([card4, card6, card7])
-        expect(player1.deck).to eq([card2, card5, card8, card1, card3])
+        expect(player2.deck.cards).to eq([card4, card6, card7])
+        expect(player1.deck.cards).to eq([card2, card5, card8, card1, card3])
     end
 end
