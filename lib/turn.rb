@@ -29,13 +29,13 @@ class Turn
 
     def pile_cards
         if self.type == :basic
-            spoils_of_war << player1.deck.rank_of_card_at(0)
-            spoils_of_war << player2.deck.rank_of_card_at(0)
+            spoils_of_war << player1.deck.remove_card
+            spoils_of_war << player2.deck.remove_card
         end
     end
 
-    def award_spoils
-        self.winner.deck.add_card(spoils_of_war)
+    def award_spoils(winner)
+        winner.deck.add_card(spoils_of_war)
     end
 
 end
