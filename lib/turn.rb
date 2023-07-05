@@ -39,17 +39,17 @@ class Turn
         if type == :basic
             spoils_of_war << player1.deck.remove_card
             spoils_of_war << player2.deck.remove_card
-        elsif type == :war
+        else type == :war
             3.times {spoils_of_war << player1.deck.remove_card}
             3.times {spoils_of_war << player2.deck.remove_card}
-        else
-            3.times {player1.deck.remove_card}
-            3.times {player2.deck.remove_card}
         end
     end
 
     def award_spoils(winner)
-        winner.deck.add_card(spoils_of_war).flatten!
+        if winner == "No Winner"
+            spoils_of_war = []
+        else
+            winner.deck.add_card(spoils_of_war).flatten!
+        end
     end
-
 end

@@ -2,6 +2,7 @@ require './lib/card'
 require './lib/deck'
 require './lib/player'
 require './lib/turn'
+require './lib/gameplay'
 
 
 #Cards in a standard deck
@@ -69,4 +70,21 @@ deck2 = Deck.new([])
     deck1.add_card(full_deck.pop)
     deck2.add_card(full_deck.pop)
 end
+
+player1 = Player.new("Megan", deck1)
+player2 = Player.new("Aurora", deck2)
+
+turn = Turn.new(player1, player2)
+
+game = Gameplay.new(player1, player2, turn)
+
+game.start
+
+input = gets.chomp
+if input == "GO"
+    game.GO
+else
+    p "I didn't want to play with you anyways."
+end
+
 
