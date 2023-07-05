@@ -26,11 +26,11 @@ class Deck
     end
 
     def remove_card
+        require 'pry';binding.pry
         cards.shift
     end
 
     def add_card(card)
         cards << card
     end
-
 end
