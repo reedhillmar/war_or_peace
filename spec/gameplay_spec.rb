@@ -26,8 +26,6 @@ RSpec.describe Gameplay do
 
         game = Gameplay.new(player1, player2, turn)
 
-        expect(game.start).to eq("Welcome to War! (or Peace) This game will be played with 52 cards.
-        The players today are #{player1.name} and #{player2.name}.
-        Type 'GO' to start the game!")
+        expect(game.start).to eq("Type 'GO' to start the game!")
     end
 end
