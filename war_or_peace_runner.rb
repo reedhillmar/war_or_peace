@@ -80,11 +80,9 @@ game = Gameplay.new(player1, player2, turn)
 
 game.start
 
-input = gets.chomp
+input = gets.chomp.upcase
 if input == "GO"
     game.GO
 else
     p "I didn't want to play with you anyways."
 end
-
-

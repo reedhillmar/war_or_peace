@@ -8,7 +8,11 @@ class Turn
     end
 
     def type
-        if player1.deck.rank_of_card_at(0) == player2.deck.rank_of_card_at(0) && player1.deck.rank_of_card_at(2) == player2.deck.rank_of_card_at(2)
+        if player1.deck.cards.length == 2 || player2.deck.cards.length == 2
+            if player1.deck.rank_of_card_at(0) == player2.deck.rank_of_card_at(0) && player1.deck.rank_of_card_at(1) == player2.deck.rank_of_card_at(1)
+                :mutually_assured_destruction
+            end
+        elsif player1.deck.rank_of_card_at(0) == player2.deck.rank_of_card_at(0) && player1.deck.rank_of_card_at(2) == player2.deck.rank_of_card_at(2)
             :mutually_assured_destruction
         elsif player1.deck.rank_of_card_at(0) == player2.deck.rank_of_card_at(0)
             :war
@@ -36,6 +40,8 @@ class Turn
     end
 
     def pile_cards
+        @spoils_of_war.clear
+
         if type == :basic
             spoils_of_war << player1.deck.remove_card
             spoils_of_war << player2.deck.remove_card
@@ -47,9 +53,8 @@ class Turn
 
     def award_spoils(winner)
         if winner == "No Winner"
-            spoils_of_war = []
         else
-            winner.deck.add_card(spoils_of_war).flatten!
+            winner.deck.add_card(spoils_of_war.shuffle).flatten!
         end
     end
 end

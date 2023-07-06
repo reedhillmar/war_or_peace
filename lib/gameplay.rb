@@ -21,18 +21,18 @@ class Gameplay
             if turn_counter > 1000000
                 p "---- DRAW ----"
                 break
-            elsif player1.deck.cards.count == 52
-                p "*~*~*~* #{player1.name} has won the game! *~*~*~*"
-                break
-            elsif player1.deck.cards.count == 52
+            elsif player1.has_lost? == true
                 p "*~*~*~* #{player2.name} has won the game! *~*~*~*"
                 break
+            elsif player2.has_lost? == true
+                p "*~*~*~* #{player1.name} has won the game! *~*~*~*"
+                break
             elsif turn.type == :basic
-                p "Turn #{turn_counter}: #{turn.winner.name} won #{turn.spoils_of_war.count} cards"
+                p "Turn #{turn_counter}: #{turn.winner.name} won #{turn.spoils_of_war.count} cards. #{player1.name}: #{player1.deck.cards.length} #{player2.name}: #{player2.deck.cards.length}"
             elsif turn.type == :war
-                p "Turn #{turn_counter}: WAR - #{turn.winner.name} won #{turn.spoils_of_war.count} cards"
+                p "Turn #{turn_counter}: WAR - #{turn.winner.name} won #{turn.spoils_of_war.count} cards. #{player1.name}: #{player1.deck.cards.length} #{player2.name}: #{player2.deck.cards.length}"
             else
-                p "Turn #{turn_counter}: *mutually assured destruction* 6 cards removed from play"
+                p "Turn #{turn_counter}: *mutually assured destruction* 6 cards removed from play. #{player1.name}: #{player1.deck.cards.length} #{player2.name}: #{player2.deck.cards.length}"
             end
 
             winner = turn.winner
